@@ -1,0 +1,26 @@
+<h1>Create your own cocktail</h1>
+<p>Find me in app/views/doses/new.html.erb</p>
+
+
+<ul>
+<% if @dose.errors.full_messages.any? %>
+  <% @dose.errors.full_messages.each do |error| %>
+    <li> <%= error %></li>
+  <% end %>
+<% end %>
+
+</ul>
+
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :description %>
+    <%= f.association :ingredient %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn btn-primary"%>
+  </div>
+<% end %>

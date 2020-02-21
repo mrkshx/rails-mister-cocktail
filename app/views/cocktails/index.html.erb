@@ -1,0 +1,29 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to "cocktails", class: "navbar-brand" do %>
+    <p><i class="fas fa-cocktail"></i></p>
+  <% end %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to "Create a new cocktail", new_cocktail_path, class: "btn btn-gradient"%>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<h1>Cool New Cocktails</h1>
+<ul>
+  <% @cocktails.each do |cocktail| %>
+  <li> <%= link_to cocktail.name, cocktail_path(cocktail) %></li>
+  <li> <%= link_to 'Destroy', cocktail, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+  <% end %>
+</ul>
+
+
+
